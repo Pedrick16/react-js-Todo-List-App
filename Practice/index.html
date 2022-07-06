@@ -1,0 +1,44 @@
+const displayName = ()=> {
+    return new Promise((resolve) => {
+        setTimeout(() =>{
+            resolve('Pedrick')
+        },3000)
+        
+    })
+   
+   
+   }
+   
+   const displayAge = ()=> {
+    return new Promise((resolve) => {
+        setTimeout(() =>{
+            resolve(20)
+        },6000)
+        
+    })
+   
+   
+   }
+   
+   const displayGender = ()=> {
+    return new Promise((resolve) => {
+        setTimeout(() =>{
+            resolve('Male')
+        },9000)
+        
+    })
+   
+   
+   }
+   
+   
+   const displayInfo = async () =>{
+         console.log('Name: ', await displayName())
+         console.log('Age: ', await displayAge())
+         console.log('Gender: ', await displayGender())
+   }
+   
+   await displayInfo()
+   VM1336:36 Name:  Pedrick
+   VM1336:37 Age:  20
+   VM1336:38 Gender:  Male

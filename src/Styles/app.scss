@@ -1,0 +1,31 @@
+*{
+    margin: 0;
+    padding: 0;
+}
+
+*{
+    font-family: 'century gothic';
+}
+
+$black-color:#000;
+$white-color:#fff;
+
+
+.app-main{
+    height: 100vh;
+    background-color: goldenrod;
+    
+  
+    
+
+    /*Layout*/
+    display: grid;
+    place-items: center;
+
+
+ 
+
+    @import './todolist.scss';
+    @import './home.scss';
+}
+
