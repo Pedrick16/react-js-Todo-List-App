@@ -71,7 +71,7 @@ const TodoList = () =>{
         setState({todo:'', TodoList: list})
 
     }
-   
+
     /*update */
     const updateTodo = (index) =>{
         const list = TodoList
