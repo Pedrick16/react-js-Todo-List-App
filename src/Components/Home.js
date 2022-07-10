@@ -11,9 +11,11 @@ const Home =() =>{
 
     return(
         <>
+        <div className="home-mains">
         <div className="home-main">
             <h1>Welcome To My TodoList</h1>
             <button onClick={handleOnClick}>Start Now</button>
+        </div>
 
         </div>
         </>

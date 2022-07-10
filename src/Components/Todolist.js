@@ -2,133 +2,130 @@ import React, { useState } from "react";
 
 
 const TodoList = () =>{
-    const [state, setState] =  useState({
+    const [state, setState] = useState({
         todo: '',
-        todolist: []
-    })
-    const [edit, setEdit] =  useState({
-        editTodo: '',
-        editIndex: ''
+        TodoList: []
     })
 
-    const [isUpdate, setisUpdate] =  useState(false)
+    const [isUpdate, setisUpdate] = useState(false)
+    const [edit, setEdit] = useState({
+        editTodo:'',
+        editIndex:''
+    })
 
-    const {todo,  todolist} = state
+    
     const {editTodo, editIndex} = edit
+    const {todo , TodoList} = state
 
-    const handleOnchangeEdit = (e) =>{
+    const handleOnchange = (e)=> {
         const {name, value} = e.target
+        setState({...state, [name]: value})
 
-        setEdit({...edit, [name]:value})
     }
 
-    const handleOnclickEdit = (index, value) =>{
-      setisUpdate(true)
+    /*edit */
+    const handleOnchangeEdit = (e)=> {
+        const {name, value} = e.target
+        setEdit({...edit, [name]: value})
 
-      setEdit({editTodo: value, editIndex: index})
     }
 
-    const handleOnclickCancel = () =>{
+  
+    
+
+
+    const HandleonClickEdit = (index, value)=> {
+        setisUpdate(true)
+
+        setEdit({editTodo: value, editIndex:index})
+
+     
+
+  
+
+
+    }
+
+      /*cancel */
+      const HandleonClickCancel = ()=> {
         setisUpdate(false)
-      }
-
-
-
-
-
-
-    const handleOnchange = (e) =>{
-        const {name, value} = e.target
-
-        setState({...state, [name]:value})
 
 
 
     }
+     
 
 
-    /*Create*/
-
-    const CreateTodo = () =>{
-        const list = todolist
+    const createtodo = () => {
+        const list = TodoList
         list.push(todo)
+        setState({todo:'', TodoList: list})
 
-        setState({todo:'',  todolist: list})
     }
-     /*DDeleteToDoList*/
-    const deleteTodoList =(index) =>{
-        const list = todolist
+
+    /*delete */
+
+    const deleteTodo = (index) => {
+        const list = TodoList
         list.splice(index, 1)
-
-        setState({todo:'',  todolist: list})
-
+        setState({todo:'', TodoList: list})
 
     }
-
+   
     /*update */
-
-    const updateTodo = (index) => {
-        const list = todolist
+    const updateTodo = (index) =>{
+        const list = TodoList
         list[index] = editTodo
 
-        setState({...state,  todolist: list})
+        setState({...state, TodoList:list})
         setisUpdate(false)
-        setEdit({editTodo:'', editIndex:''})
+
     }
 
 
 
 
 
+   
 
     return(
       <>
-        <div className="todolist-main">
-            <div className="form-wrapper">
-                <input
-                 type='text'
-                 name="todo"
-                 value={todo}
-                 placeholder="Create todolist"
-                 onChange={handleOnchange}
-                />
-                <button onClick={CreateTodo}>ADD</button>
-            </div>
-            <div className="table-main">
-                <div className="header-wrapper">
-                    <span>To Do</span>
-                    <span>Action</span>
-                </div>
-                {
-                    todolist.length ?
-                    todolist.map((value, index) =>{
-                        return(
+      <div className="todolist-main">
+          <div className="form-wrapper">
+              <input type='text' name='todo' value={todo} placeholder="create todolist" onChange={handleOnchange}/>
+              <button onClick={createtodo}>Add Todo</button>
+          </div>
+          <div className="table-main">
+             <div className="header-wrapper">
+               <span>Todo</span>
+               <span>Action</span>
+             </div>
+             {
+                  TodoList.length ?
+                  TodoList.map((value, index) => {
+                    return(
                         <div key={index} className="row-wrapper">
-                           <span>{value}</span>
-                           <button onClick={() => handleOnclickEdit(index,value)}>Edit</button>
-                           <button onClick={ () => deleteTodoList(index)} >Delete</button>
+                        <span>{value}</span>
+                        <button onClick={ () =>HandleonClickEdit(index,value)}>Edit</button>
+                        <button onClick={() =>deleteTodo(index)}>Delete</button>
                         </div>
-                        )
-                    }): <p>HI, Let's Create Now!</p>
-                }
-                {
-                    isUpdate ?
-                    <div className="form-update">
-                        <span>Index: {editIndex}</span>
-                      <input
-                        type='text'
-                        name="editTodo"
-                        value={editTodo}
-                        placeholder="Update Todo"
-                        onChange={handleOnchangeEdit}
-                      />
-                       <button onClick={ () => updateTodo(editIndex)}>Update</button>
-                       <button onClick={handleOnclickCancel}>Cancel</button>
-                    </div>: ''
-                }
-            </div>
-        </div>
-
+                    )
+                   
+                }): <p>Let's create now!</p>
+             }
+             {
+                isUpdate ?
+                <div className="form-wrapper-update">
+                 <span>Index: {editIndex}</span>
+                <input type='text' name='editTodo' value={editTodo} onChange={handleOnchangeEdit} placeholder="Update your Todo"/>
+                <button onClick={ () => updateTodo(editIndex)}>Update</button>
+                <button onClick={HandleonClickCancel}>Cancel</button>
+               </div>: ''
+             }
+           
+           
+          </div>
+      </div>
       </>
     )
 }

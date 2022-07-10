@@ -1,19 +1,37 @@
-.home-main{
-    display: grid;
-    row-gap: 10px;
-    place-items: center;
-
- 
-
-    button{
-        border: none;
-        height: 50px;
-        width: 100px;
-        cursor: pointer;
-        background-color: black;
-        border-radius: 10px;
-        color: white;
-
-        
-    }
+*{
+    margin: 0;
+    padding: 0;
 }
+.home-mains{
+    height: 100vh;
+    display: grid;
+    place-items: center;
+    background-color: lightgrey;
+
+
+    .home-main{
+
+        display: grid;
+        row-gap: 10px;
+      
+        place-items: center;
+       
+        
+    
+     
+    
+        button{
+            border: none;
+            height: 50px;
+            width: 100px;
+            cursor: pointer;
+            background-color: black;
+            border-radius: 10px;
+            color: white;
+    
+            
+        }
+
+    }
+
+}  
